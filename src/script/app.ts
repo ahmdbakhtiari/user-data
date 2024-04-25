@@ -143,7 +143,7 @@ searchBtn?.addEventListener("click", () => {
             <th>عملیات</th>
         </tr>`;
 
-    if (searchInputName != null && searchInputName.value != "" && searchInputFamily != null && searchInputFamily.value != "" || searchInputIdentity != null && searchInputIdentity.value != "" || searchInputPhone != null && searchInputPhone.value != "") {
+    if (searchInputName != null && searchInputName.value != "" && searchInputFamily != null && searchInputFamily.value != "" ) {
         searchedUser = siteUsers.filter(function (user) {
             return user.name == searchInputName?.value && user.family == searchInputFamily?.value || user.identity == searchInputIdentity?.value || user.phone == searchInputPhone?.value;
         })

@@ -106,7 +106,7 @@ if (statisticUserModal) {
 searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener("click", function () {
     var searchedUser = siteUsers;
     var tHeadStr = "\n        <tr class=\"user-row\">\n            <th>\u0631\u062F\u06CC\u0641</th>\n            <th>\u0646\u0627\u0645</th>\n            <th>\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC</th>\n            <th>\u06A9\u062F \u0645\u0644\u06CC</th>\n            <th>\u0634\u0645\u0627\u0631\u0647 \u062A\u0644\u0641\u0646</th>\n            <th>\u0639\u0645\u0644\u06CC\u0627\u062A</th>\n        </tr>";
-    if (searchInputName != null && searchInputName.value != "" && searchInputFamily != null && searchInputFamily.value != "" || searchInputIdentity != null && searchInputIdentity.value != "" || searchInputPhone != null && searchInputPhone.value != "") {
+    if (searchInputName != null && searchInputName.value != "" && searchInputFamily != null && searchInputFamily.value != "") {
         searchedUser = siteUsers.filter(function (user) {
             return user.name == (searchInputName === null || searchInputName === void 0 ? void 0 : searchInputName.value) && user.family == (searchInputFamily === null || searchInputFamily === void 0 ? void 0 : searchInputFamily.value) || user.identity == (searchInputIdentity === null || searchInputIdentity === void 0 ? void 0 : searchInputIdentity.value) || user.phone == (searchInputPhone === null || searchInputPhone === void 0 ? void 0 : searchInputPhone.value);
         });
