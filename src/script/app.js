@@ -111,11 +111,13 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
             return user.name == (searchInputName === null || searchInputName === void 0 ? void 0 : searchInputName.value) && user.family == (searchInputFamily === null || searchInputFamily === void 0 ? void 0 : searchInputFamily.value) || user.identity == (searchInputIdentity === null || searchInputIdentity === void 0 ? void 0 : searchInputIdentity.value) || user.phone == (searchInputPhone === null || searchInputPhone === void 0 ? void 0 : searchInputPhone.value);
         });
     }
-    else {
-        alert("نام و نام خانوادگی را وارد کنید");
+    else if (searchInputName != null && searchInputName.value == "" && searchInputFamily != null && searchInputFamily.value == "" && searchInputIdentity != null && searchInputIdentity.value == "" && searchInputPhone != null && searchInputPhone.value == "") {
+        //save our new array in our local storage and reload page
+        localStorage.setItem("Users", JSON.stringify(siteUsers));
+        location.reload();
     }
-    if (searchInputName != null && searchInputName.value == "" && searchInputFamily != null && searchInputFamily.value == "" && searchInputIdentity != null && searchInputIdentity.value == "" && searchInputPhone != null && searchInputPhone.value == "") {
-        loadData(siteUsers);
+    else {
+        alert("نام و نام خانوادگی خود را وارد کنید");
     }
     usersTableBody.innerHTML = tHeadStr;
     loadData(searchedUser);
@@ -146,6 +148,7 @@ addUserForm === null || addUserForm === void 0 ? void 0 : addUserForm.addEventLi
 //visit user action
 function visitHandler(index) {
     //create jsx to show our user in visit modal
+    console.log(index);
     var dataVisit = "\n    <img class=\"close-modal \" onclick=\"closeVisit()\" src=\"../../image/svg/close.svg\" alt=\"Close\" />\n    <div>\n        <h3>\u0646\u0627\u0645 : </h3>\n        <p>".concat(siteUsers[index].name, "</p>\n    </div>\n    <div>\n        <h3>\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC : </h3>\n        <p>").concat(siteUsers[index].family, "</p>\n    </div>\n    <div>\n        <h3>\u06A9\u062F \u0645\u0644\u06CC : </h3>\n        <p>").concat(siteUsers[index].identity, "</p>\n    </div>\n    <div>\n        <h3>\u0634\u0645\u0627\u0631\u0647 \u062A\u0644\u0641\u0646 : </h3>\n        <p>").concat(siteUsers[index].phone, "</p>\n    </div>");
     //add our jsx in our html element
     visitUserContainer === null || visitUserContainer === void 0 ? void 0 : visitUserContainer.insertAdjacentHTML("beforeend", dataVisit);

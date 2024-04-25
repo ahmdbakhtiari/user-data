@@ -147,16 +147,15 @@ searchBtn?.addEventListener("click", () => {
         searchedUser = siteUsers.filter(function (user) {
             return user.name == searchInputName?.value && user.family == searchInputFamily?.value || user.identity == searchInputIdentity?.value || user.phone == searchInputPhone?.value;
         })
+    }else if (searchInputName != null && searchInputName.value == "" && searchInputFamily != null && searchInputFamily.value == "" && searchInputIdentity != null && searchInputIdentity.value == "" && searchInputPhone != null && searchInputPhone.value == "") {
+        //save our new array in our local storage and reload page
+        localStorage.setItem("Users", JSON.stringify(siteUsers))
+        location.reload()
     } else {
-        alert("نام و نام خانوادگی را وارد کنید")
-    }
-
-    if (searchInputName != null && searchInputName.value == "" && searchInputFamily != null && searchInputFamily.value == "" && searchInputIdentity != null && searchInputIdentity.value == "" && searchInputPhone != null && searchInputPhone.value == "") {
-        loadData(siteUsers)
+        alert("نام و نام خانوادگی خود را وارد کنید")
     }
 
     usersTableBody!.innerHTML = tHeadStr;
-
     loadData(searchedUser)
 
 })
@@ -188,6 +187,8 @@ addUserForm?.addEventListener("click", () => {
 //visit user action
 function visitHandler(index) {
     //create jsx to show our user in visit modal
+    console.log(index);
+    
     let dataVisit = `
     <img class="close-modal " onclick="closeVisit()" src="../../image/svg/close.svg" alt="Close" />
     <div>
